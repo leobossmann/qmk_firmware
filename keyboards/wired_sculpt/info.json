@@ -27,6 +27,9 @@
         "pid": "0x0000",
         "vid": "0xFEED"
     },
+    "bootmagic": {
+        "matrix": [6, 13]
+    },
     "layouts": {
         "LAYOUT_iso": {
             "layout": [
