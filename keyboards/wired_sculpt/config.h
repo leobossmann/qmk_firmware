@@ -3,7 +3,6 @@
 
 #pragma once
 
-#define DIP_SWITCH_PINS {F4}
 /*
  * Feature disable options
  *  These options are also useful to firmware size reduction.
