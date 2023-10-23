@@ -4,6 +4,7 @@
 #pragma once
 
 #define DIP_SWITCH_PINS {F4}
+#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
 /*
  * Feature disable options
  *  These options are also useful to firmware size reduction.
