@@ -8,7 +8,7 @@
         "bootmagic": true,
         "command": false,
         "console": false,
-        "extrakey": false,
+        "extrakey": true,
         "mousekey": false,
         "nkro": false,
         "dip_switch": true
@@ -23,9 +23,9 @@
     "processor": "at90usb1286",
     "url": "",
     "usb": {
-        "device_version": "1.0.0",
-        "pid": "0x0000",
-        "vid": "0xFEED"
+        "device_version": "0.0.2",
+        "pid": "0x0815",
+        "vid": "0x1209"
     },
     "bootmagic": {
         "matrix": [4, 13]
