@@ -89,6 +89,38 @@ bool dip_switch_update_kb(uint8_t index, bool active) {
     return dip_switch_update_user(index, active);
 }
 
+void caps_word_set_user(bool active) {
+    if (active) {
+        writePinHigh(RED_LED_PIN);
+        // Do something when Caps Word activates.
+    } else {
+        writePinLow(RED_LED_PIN);
+        // Do something when Caps Word deactivates.
+    }
+}
+
+bool caps_word_press_user(uint16_t keycode) {
+    switch (keycode) {
+        // Keycodes that continue Caps Word, with shift applied.
+        case KC_A ... KC_Z:
+        // original implementation uses KC_MINS here, on a German layout this needs to be KC_SLSH
+        case KC_SLSH:
+            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
+            return true;
+
+        // Keycodes that continue Caps Word, without shifting.
+        case KC_1 ... KC_0:
+        case KC_BSPC:
+        case KC_DEL:
+        case KC_UNDS:
+            return true;
+
+        default:
+            return false;  // Deactivate Caps Word.
+    }
+}
+
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   // If console is enabled, it will print the matrix position and status of each key pressed
 #ifdef CONSOLE_ENABLE
