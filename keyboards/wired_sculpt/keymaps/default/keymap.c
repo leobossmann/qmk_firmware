@@ -42,12 +42,6 @@ void keyboard_pre_init_kb(void) {
     // Power reduction. Doesn't save much. :(
     PRR0 = 0b10000101;
     PRR1 = 0b00000001;
-
-    // TODO: check what to do about this
-    // Default the charge pump's EN to off
-    PORTB &= ~1;
-    DDRB |= 1;
-
 }
 
 void keyboard_post_init_kb(void) {
@@ -65,6 +59,7 @@ void keyboard_post_init_kb(void) {
 
     // green LED in between the space keys, lights up on low
     setPinOutput(GREEN_LED_PIN);
+    writePinHigh(GREEN_LED_PIN);
 
     // red LED in between the space keys
     setPinOutput(RED_LED_PIN);
