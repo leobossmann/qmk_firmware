@@ -7,7 +7,7 @@
     "features": {
         "bootmagic": true,
         "command": false,
-        "console": false,
+        "console": true,
         "extrakey": true,
         "mousekey": false,
         "nkro": false,
@@ -19,7 +19,7 @@
         "ghost": true,
         "io_delay": 5
     },
-    "debounce": 3,
+    "debounce": 5,
     "processor": "at90usb1286",
     "url": "",
     "usb": {
