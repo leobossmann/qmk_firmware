@@ -85,10 +85,8 @@ bool dip_switch_update_kb(uint8_t index, bool active) {
     case 0:
         if (active) {
             layer_off(_CUSTOM);
-            writePinHigh(GREEN_LED_PIN);
          } else {
             layer_on(_CUSTOM);
-            writePinLow(GREEN_LED_PIN);
         }
     }
     return dip_switch_update_user(index, active);
