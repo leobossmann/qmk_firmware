@@ -11,6 +11,45 @@ enum custom_layers {
     _MEDIA
 };
 
+// Tap Dance declarations
+enum {
+    TD_LEFT_BRACKET,
+    TD_RIGHT_BRACKET
+};
+
+uint8_t mod_state;
+
+void dance_left_bracket(tap_dance_state_t *state, void *user_data) {
+    mod_state = get_mods();
+    switch (state->count) {
+        case 1:
+            tap_code(KC_LBRC);
+            //reset_tap_dance(state);
+            break;
+        case 2:
+            register_code(KC_LALT);
+            tap_code(KC_5);
+            unregister_code(KC_LALT);
+            //reset_tap_dance(state);
+            break;
+        case 3:
+            register_code(KC_LALT);
+            tap_code(KC_8);
+            unregister_code(KC_LALT);
+            //reset_tap_dance(state);
+            break;
+    }
+};
+
+
+// Tap Dance definitions
+tap_dance_action_t tap_dance_actions[] = {
+    // Tap "ü" once for ü, twice for "["
+    [TD_LEFT_BRACKET] = ACTION_TAP_DANCE_FN(dance_left_bracket),
+    // Tap "+" once for +, twice for "]"
+    [TD_RIGHT_BRACKET] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, LALT(KC_6))
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
   [_BASE] = LAYOUT_iso(
@@ -26,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*  0      1        2        3        4        5        6        7        8        9        10       11       12       13       14       15       16  */
     _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPLY, KC_MUTE, KC_VOLD, KC_VOLU, MO(_MEDIA), _______, _______, LCTL(LGUI(KC_Q)),
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______, KC_PPLS,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                            _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, TD(TD_LEFT_BRACKET), TD(TD_RIGHT_BRACKET),      _______,
     KC_ESC,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______, _______,
     _______, KC_LALT, KC_LGUI,                            _______, _______,                   _______, MO(_MEDIA), _______,          _______, _______, _______
@@ -139,3 +178,4 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &delete_key_override,
     NULL // Null terminate the array of overrides!
 };
+
