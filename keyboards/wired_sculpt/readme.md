@@ -1,5 +1,7 @@
 # wired_sculpt
 
+This Firmware is not entirely my own work, it is based on [Chad Austin's](https://github.com/chadaustin/qmk_firmware/tree/master/keyboards/handwired/sculpt) and [Jean Bernard's](https://github.com/qmk/qmk_firmware/tree/master/keyboards/ms_sculpt) work.
+
 ![wired_sculpt](imgur.com image replace me!)
 
 *A short description of the keyboard/project*
