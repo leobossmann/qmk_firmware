@@ -1,6 +1,7 @@
 # Build Options
 #   change yes to no to disable
 #
+BOOTLOADER = rp2040
 AUDIO_ENABLE = no           # Audio output
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
